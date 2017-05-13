@@ -13,7 +13,7 @@ function print_header {
     \n\n";
 }
 
-if ![ -z ${COMPONENT_NAME+x} ];
+if ! [ -z ${COMPONENT_NAME+x} ];
 then exit_with_error "Component name must be specified."
 fi
 

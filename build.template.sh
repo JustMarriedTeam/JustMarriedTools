@@ -13,8 +13,8 @@ function print_header {
     \n\n";
 }
 
-if ! [ -z ${COMPONENT_NAME+x} ];
-then exit_with_error "Component name must be specified."
+if [ -z "$COMPONENT_NAME" ];
+then exit_with_error "Component name (COMPONENT_NAME) must be specified."
 fi
 
 ENVIRONMENT=${ENVIRONMENT:-production}

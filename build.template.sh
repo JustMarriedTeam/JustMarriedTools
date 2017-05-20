@@ -17,6 +17,7 @@ if [ -z "${COMPONENT_NAME}" ];
 then exit_with_error "Component name (COMPONENT_NAME) must be specified."
 fi
 
+
 ENVIRONMENT=${ENVIRONMENT:-production}
 VERSION=${VERSION:-latest}
 

@@ -25,6 +25,8 @@ BUILD_NAME=${ENVIRONMENT}-${VERSION}
 BUILDER_IMAGE_NAME=${COMPONENT_NAME}-builder:${BUILD_NAME}
 APP_IMAGE_NAME=just-married/${COMPONENT_NAME}:${BUILD_NAME}
 
+BUILD_ENVIRONMENT=${BUILD_ENVIRONMENT:-}
+
 mkdir -p artifacts
 
 print_header "STARTING BUILD (IMAGE ${APP_IMAGE_NAME})"
@@ -44,6 +46,7 @@ print_header "BUILD STEP 2 (Running build container ${BUILDER_IMAGE_NAME})"
 
 ARTIFACT=$(docker run \
   -v $(pwd)/artifacts:/artifacts \
+  ${BUILD_ENVIRONMENT} \
   ${BUILDER_IMAGE_NAME} \
   || exit_with_error "Could not run build container ${BUILDER_IMAGE_NAME}") | tail -1
 
